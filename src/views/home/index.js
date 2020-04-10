@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import {
   Container,
   Main,
-  AsideWrap
+  AsideWrap,
+  BackToTop
 } from './style'
 import { actionCreators } from './store'
 
@@ -24,20 +25,42 @@ class Home extends React.Component {
           <Board />
           <RecommendAuthor />
         </AsideWrap>
+
+        {this.props.showBackTop && <BackToTop onClick={this.handleBackTop}>回到顶部</BackToTop>}
       </Container>
     )
   }
 
   componentDidMount () {
     this.props.handleGetData()
+    this.bindEvents()
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.props.changeScrollTopShow)
+  }
+
+  handleBackTop () {
+    window.scroll(0, 0)
+  }
+
+  bindEvents () {
+    window.addEventListener('scroll', this.props.changeScrollTopShow)
   }
 }
+
+const mapStateToProps = (state) => ({
+  showBackTop: state.getIn(['home', 'showBackTop'])
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
     handleGetData () {
       dispatch(actionCreators.getHomeData())
+    },
+    changeScrollTopShow () {
+      dispatch(actionCreators.changeScrollTopShowAction(document.documentElement.scrollTop > 50 ? true : false))
     }
   }
 }
-export default connect(null, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -61,6 +61,12 @@ export const ArticleList = styled.ul`
     display: block;
     border-radius: 20px;
     background-color: #a5a5a5;
+    outline: none;
+
+    :hover {
+      color: #fff;
+      background-color: #9b9b9b;
+    }
   }
 `
 export const ListItem = styled.li`
@@ -183,4 +189,18 @@ export const RecommendAuthorListItem = styled.li`
 export const RecommendAuthorList = styled.ul`
   margin: 0 0 20px;
   text-align: left;
+`
+
+export const BackToTop = styled.button`
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  border: 1px solid #dcdcdc;
+  background-color: #fff;
+  transition: .1s ease-in;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  z-index: 2;
 `

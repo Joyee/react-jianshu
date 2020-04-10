@@ -11,9 +11,9 @@ class Recommend extends React.Component {
         {
           this.props.recommendList.map((item) => {
             return (
-              <a className='collection' href='/' key={item.id}>
-                <img src={item.imgUrl} alt='' />
-                <div className='name'>{item.title}</div>
+              <a className='collection' href='/' key={item.get('id')}>
+                <img src={item.get('imgUrl')} alt='' />
+                <div className='name'>{item.get('title')}</div>
               </a>
             )
           })
