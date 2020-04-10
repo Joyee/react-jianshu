@@ -1,0 +1,50 @@
+{
+  "success": true,
+  "data": {
+    "recommendList": [
+      {
+        "id": 1001,
+        "imgUrl": "https://upload.jianshu.io/collections/images/76/12.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
+        "title": "自然科普"
+      },
+      {
+        "id": 1002,
+        "imgUrl": "https://upload.jianshu.io/collections/images/4/sy_20091020135145113016.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
+        "title": "读书"
+      },
+      {
+        "id": 1003,
+        "imgUrl": "https://upload.jianshu.io/collections/images/83/1.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
+        "title": "摄影"
+      }
+    ],
+    "articleList": [
+      {
+        "id": 10001,
+        "title": "怀孕女子大巴上假装肚子疼，逼迫司机半路停车，却救回一车人性命",
+        "abstract": "在一个长途大巴上，怀孕女子马晓晴突然大喊肚子疼，要下车方便一下。司机不同意，在马晓晴的逼迫下，不得已将车停在了路边。司机骂骂咧咧，但出人意料的是..."
+      },
+      {
+        "id": 10002,
+        "title": "47岁的陶虹：绝顶聪明的女人，都不声不响地拥有了全世界",
+        "abstract": "文 | 嘻嘻 ​ 最近，随着《小欢喜》开播，已经很久没在电视剧荧幕里出现的陶虹，重新回到了大众的视野中。 剧中的她，饰演一位金牌辅导老师。刚出场..."
+      }
+    ],
+    "recommendAuthor": [
+      {
+        "id": 10001,
+        "name": "董克平日记",
+        "avatar": "https://upload.jianshu.io/users/upload_avatars/9988193/fc26c109-1ae6-4327-a298-2def343e9cd8.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
+        "total": "912.9k",
+        "like": "3.4k"
+      },
+      {
+        "id": 10002,
+        "name": "穿着prada挤地铁",
+        "avatar": "https://upload.jianshu.io/users/upload_avatars/2587459/9f4cfc0f-88b8-420c-b36e-9741e1191644.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
+        "total": "312.9k",
+        "like": "5.4k"
+      }
+    ]
+  }
+}

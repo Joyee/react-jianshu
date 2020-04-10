@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {
   RecommendAuthorWrap,
   RecommendAuthorListItem,
@@ -15,30 +16,30 @@ class RecommendAuthor extends React.Component {
             <span ref={(spin) => this.spinIcon = spin} className="iconfont spin">&#xe851;</span>换一批</SearchBarSwitch>
         </div>
         <RecommendAuthorList>
-          <RecommendAuthorListItem>
-            <a className='avatar' href='/'>
-              <img src='https://upload.jianshu.io/users/upload_avatars/9988193/fc26c109-1ae6-4327-a298-2def343e9cd8.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp' alt='' />
-            </a>
-            <a className='info' href='/'>
-              <div className='name'>董克平日记</div>
-              <p className='desc'>写了912.9k字 · 3.4k喜欢</p>
-            </a>
-            <a className='follow' href='/'><span className='iconfont'>&#xe65b;</span>关注</a>
-          </RecommendAuthorListItem>
-          <RecommendAuthorListItem>
-            <a className='avatar' href='/'>
-              <img src='https://upload.jianshu.io/users/upload_avatars/9988193/fc26c109-1ae6-4327-a298-2def343e9cd8.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp' alt='' />
-            </a>
-            <a className='info' href='/'>
-              <div className='name'>董克平日记</div>
-              <p className='desc'>写了912.9k字 · 3.4k喜欢</p>
-            </a>
-            <a className='follow' href='/'><span className='iconfont'>&#xe65b;</span>关注</a>
-          </RecommendAuthorListItem>
+          {
+            this.props.recommendAuthor.map((item) => {
+              return (
+                <RecommendAuthorListItem key={item.id}>
+                  <a className='avatar' href='/'>
+                    <img src={item.avatar} alt='' />
+                  </a>
+                  <a className='info' href='/'>
+                    <div className='name'>{item.name}</div>
+                    <p className='desc'>写了{item.total}字 · {item.like}喜欢</p>
+                  </a>
+                  <a className='follow' href='/'><span className='iconfont'>&#xe65b;</span>关注</a>
+                </RecommendAuthorListItem>
+              )
+            })
+          }
         </RecommendAuthorList>
       </RecommendAuthorWrap>
     );
   }
 }
 
-export default RecommendAuthor
+const mapStateToProps = (state) => ({
+  recommendAuthor: state.getIn(['home', 'recommendAuthor'])
+})
+
+export default connect(mapStateToProps)(RecommendAuthor)

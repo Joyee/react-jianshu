@@ -1,9 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {
   Container,
   Main,
   AsideWrap
 } from './style'
+import { actionCreators } from './store'
 
 import List from './components/List'
 import Board from './components/Board'
@@ -15,16 +17,27 @@ class Home extends React.Component {
     return (
       <Container>
         <Main>
-          <Recommend/>
-          <List/>
+          <Recommend />
+          <List />
         </Main>
         <AsideWrap>
-          <Board/>
-          <RecommendAuthor/>
+          <Board />
+          <RecommendAuthor />
         </AsideWrap>
       </Container>
     )
   }
+
+  componentDidMount () {
+    this.props.handleGetData()
+  }
 }
 
-export default Home
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleGetData () {
+      dispatch(actionCreators.getHomeData())
+    }
+  }
+}
+export default connect(null, mapDispatchToProps)(Home)
