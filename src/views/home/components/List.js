@@ -5,6 +5,7 @@ import {
   ArticleList
 } from '../style'
 import { actionCreators } from '../store'
+import { Link } from 'react-router-dom'
 
 class List extends React.Component {
   render () {
@@ -13,13 +14,15 @@ class List extends React.Component {
         <ArticleList>
           {this.props.articleList.map(item => {
             return (
-              <ListItem key={item.get('id')}>
-                <div className='content'>
-                  <a className='title' href='/detail'>{item.get('title')}</a>
-                  <p className='abstract'>{item.get('abstract')}</p>
-                  <div className='meta'></div>
-                </div>
-              </ListItem>
+              <Link key={item.get('id')} to='/detail'>
+                <ListItem>
+                  <div className='content'>
+                    <p className='title' href='#'>{item.get('title')}</p>
+                    <p className='abstract'>{item.get('abstract')}</p>
+                    <div className='meta'></div>
+                  </div>
+                </ListItem>
+              </Link>
             )
           })}
           <button className='load-more' onClick={this.props.handleLoadMore}>阅读更多</button>

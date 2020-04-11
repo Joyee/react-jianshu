@@ -14,7 +14,7 @@ import {
   SearchTip,
   SearchTipItem,
 } from './style'
-
+import { Link } from 'react-router-dom'
 
 class Header extends React.Component {
 
@@ -57,7 +57,7 @@ class Header extends React.Component {
     const { focused, tipList, handleInputBlur, handleInputFocus } = this.props
     return (
       <HeaderWrapper>
-        <Logo />
+        <Link to='/'><Logo /></Link>
         <Btn className="write-btn"><span className="iconfont">&#xe608;</span>写文章</Btn>
         <Btn className='sign-up'>注册</Btn>
         <Btn className='login'>登录</Btn>
