@@ -62,6 +62,17 @@ export const NavItem = styled.li`
       }
     }
   }
+
+  &.login {
+    margin-left: auto;
+    font-size: 15px;
+    color: #969696;
+    padding: 6px 12px;
+    float: right;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+  }
 `
 
 export const NavSearch = styled.input.attrs({
@@ -87,12 +98,13 @@ export const NavSearch = styled.input.attrs({
   }
 `
 
-export const Btn = styled.a.attrs(() => ({
-  href: '/'
-}))`
+export const Btn = styled.button`
   padding: 6px 12px;
   float: right;
   text-align: center;
+  cursor: pointer;
+  display: block;
+  z-index: 2;
 
   &.write-btn {
     width: 100px;
@@ -120,12 +132,17 @@ export const Btn = styled.a.attrs(() => ({
     color: #ea6f5a;
     background-color: transparent;
   }
+`
 
-  &.login {
-    margin: 12px 6px 0 10px;
-    font-size: 15px;
-    color: #969696;
-  }
+export const LoginIn = styled.button`
+  margin: 12px 6px 0 10px;
+  font-size: 15px;
+  color: #969696;
+  padding: 6px 12px;
+  float: right;
+  text-align: center;
+  cursor: pointer;
+  display: block;
 `
 
 export const SearchBarTips = styled.div`

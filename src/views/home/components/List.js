@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import {
   ListItem,
@@ -7,7 +7,7 @@ import {
 import { actionCreators } from '../store'
 import { Link } from 'react-router-dom'
 
-class List extends React.Component {
+class List extends PureComponent {
   render () {
     return (
       <div className='list-container'>

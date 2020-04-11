@@ -13,8 +13,10 @@ import {
   SearchBarTitle,
   SearchTip,
   SearchTipItem,
+  LoginIn
 } from './style'
 import { Link } from 'react-router-dom'
+import { actionCreators as loginActionCreators } from '../../views/login/store'
 
 class Header extends React.Component {
 
@@ -22,7 +24,7 @@ class Header extends React.Component {
     const { focused, tipList, mouseIn, page, totalPage, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props
     const newList = tipList.toJS()
     const list = []
-    
+
     if (newList.length) {
       for (let i = (page - 1) * 10; i < page * 10; i++) {
         list.push(newList[i])
@@ -35,32 +37,31 @@ class Header extends React.Component {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-            <SearchBarTitle>
-              热门搜索
+          <SearchBarTitle>
+            热门搜索
               <SearchBarSwitch onClick={() => handleChangePage(page, totalPage, this.spinIcon)}>
-                <span ref={(spin) => this.spinIcon = spin} className="iconfont spin">&#xe851;</span>
+              <span ref={(spin) => this.spinIcon = spin} className="iconfont spin">&#xe851;</span>
                 换一换
               </SearchBarSwitch>
-            </SearchBarTitle>
-            <SearchTip>
-              {
-                list.length && list.map((item) => {
-                  return <SearchTipItem key={item}>{item}</SearchTipItem>
-                })
-              }
-            </SearchTip>
-          </SearchBarTips>
+          </SearchBarTitle>
+          <SearchTip>
+            {
+              list.length && list.map((item) => {
+                return <SearchTipItem key={item}>{item}</SearchTipItem>
+              })
+            }
+          </SearchTip>
+        </SearchBarTips>
       )
     }
   }
   render () {
-    const { focused, tipList, handleInputBlur, handleInputFocus } = this.props
+    const { focused, tipList, isLogin, handleInputBlur, handleInputFocus, handleLogout } = this.props
     return (
       <HeaderWrapper>
         <Link to='/'><Logo /></Link>
-        <Btn className="write-btn"><span className="iconfont">&#xe608;</span>写文章</Btn>
+        <Link to='/write'><Btn className="write-btn"><span className="iconfont">&#xe608;</span>写文章</Btn></Link>
         <Btn className='sign-up'>注册</Btn>
-        <Btn className='login'>登录</Btn>
         <Nav>
           <NavItem><a href="/" className="active">首页</a></NavItem>
           <NavItem><a href="/">下载APP</a></NavItem>
@@ -72,6 +73,13 @@ class Header extends React.Component {
             ></NavSearch>
             <a className={focused ? 'search-btn focused' : 'search-btn'} href='/'><span className='iconfont'>&#xe6e4;</span></a>
             {this.getSearchTips()}
+          </NavItem>
+          <NavItem className='login'>
+            {
+              isLogin ?
+                <LoginIn className='login' onClick={handleLogout}>退出登录</LoginIn> :
+                <Link to='/login'>登录</Link>
+            }
           </NavItem>
         </Nav>
       </HeaderWrapper>
@@ -88,7 +96,8 @@ const mapStateToProps = (state) => {
     tipList: state.getIn(['header', 'tipList']),
     mouseIn: state.getIn(['header', 'mouseIn']),
     page: state.getIn(['header', 'page']),
-    totalPage: state.getIn(['header', 'totalPage'])
+    totalPage: state.getIn(['header', 'totalPage']),
+    isLogin: state.getIn(['login', 'isLogin'])
   }
 }
 
@@ -115,7 +124,10 @@ const mapDispatchToProps = (dispatch) => {
         originAngle = 0
       }
       spin.style.transform = `rotate(${originAngle + 360}deg)`
-      dispatch(actionCreators.changeTipPageAction(page < totalPage ? page+1 : 1))
+      dispatch(actionCreators.changeTipPageAction(page < totalPage ? page + 1 : 1))
+    },
+    handleLogout () {
+      dispatch(loginActionCreators.logoutAction())
     }
   }
 }

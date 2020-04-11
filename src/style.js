@@ -57,4 +57,9 @@ export const GlobaleStyle = createGlobalStyle`
   a, body {
     color: #333;
   }
+
+  button {
+    outline: none;
+    border: none;
+  }
 `

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import {
   RecommendAuthorWrap,
@@ -6,7 +6,7 @@ import {
   RecommendAuthorList,
   SearchBarSwitch
 } from '../style'
-class RecommendAuthor extends React.Component {
+class RecommendAuthor extends PureComponent {
   render () {
     return (
       <RecommendAuthorWrap>

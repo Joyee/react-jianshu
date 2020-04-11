@@ -6,7 +6,11 @@ import {
 } from 'react-router-dom'
 import Header from './common/header'
 import Home from './views/home'
-import Detail from './views/detail'
+// import Detail from './views/detail'
+import Login from './views/login'
+import Write from './views/write'
+
+const Detail = React.lazy(() => import('./views/detail'))
 
 function App () {
   return (
@@ -14,7 +18,11 @@ function App () {
       <div className="App">
         <Header />
         <Route path='/' exact component={Home}></Route>
-        <Route path='/detail/:id' exact component={Detail}></Route>
+        <Route path='/login' exact component={Login}></Route>
+        <React.Suspense fallback={<div>loading</div>}>
+          <Route path='/detail/:id' exact component={Detail}></Route>
+        </React.Suspense>
+        <Route path='/write' exact component={Write}></Route>
       </div>
     </Router>
   );

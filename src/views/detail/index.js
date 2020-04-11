@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import { DetailWrap } from './style'
 import { connect } from 'react-redux'
 import {
   actionCreators
 } from './store'
 
-class Detail extends React.Component {
+class Detail extends PureComponent {
   render () {
     return (
       <DetailWrap>
         <div>
           <h2 className='title'>{this.props.title}</h2>
-          <p className='content' dangerouslySetInnerHTML={{__html: this.props.content}}></p>
+          <p className='content' dangerouslySetInnerHTML={{ __html: this.props.content }}></p>
         </div>
       </DetailWrap>
     )
