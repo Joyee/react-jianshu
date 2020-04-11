@@ -4,21 +4,21 @@ import { connect } from 'react-redux'
 import {
   actionCreators
 } from './store'
+
 class Detail extends React.Component {
   render () {
-    const { title, content } = this.props
     return (
       <DetailWrap>
         <div>
-          <h2 className='title'>{title}</h2>
-          <p className='content' dangerouslySetInnerHTML={{__html: content}}></p>
+          <h2 className='title'>{this.props.title}</h2>
+          <p className='content' dangerouslySetInnerHTML={{__html: this.props.content}}></p>
         </div>
       </DetailWrap>
     )
   }
 
   componentDidMount () {
-    this.props.getDetailData()
+    this.props.getDetailData(this.props.match.params.id)
   }
 }
 
@@ -29,8 +29,8 @@ const mapStateToProps = (state) => ({
 
 const mapDipatchToProps = (dispatch) => {
   return {
-    getDetailData () {
-      dispatch(actionCreators.getDetailDataAction())
+    getDetailData (id) {
+      dispatch(actionCreators.getDetailDataAction(id))
     }
   }
 }

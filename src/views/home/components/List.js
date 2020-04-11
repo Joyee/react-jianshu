@@ -14,7 +14,7 @@ class List extends React.Component {
         <ArticleList>
           {this.props.articleList.map(item => {
             return (
-              <Link key={item.get('id')} to='/detail'>
+              <Link key={item.get('id')} to={`/detail/${item.get('id')}`}>
                 <ListItem>
                   <div className='content'>
                     <p className='title' href='#'>{item.get('title')}</p>

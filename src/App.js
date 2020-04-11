@@ -13,8 +13,8 @@ function App () {
     <Router>
       <div className="App">
         <Header />
-        <Route exact path='/'><Home/></Route>
-        <Route exact path='/detail'><Detail/></Route>
+        <Route path='/' exact component={Home}></Route>
+        <Route path='/detail/:id' exact component={Detail}></Route>
       </div>
     </Router>
   );
